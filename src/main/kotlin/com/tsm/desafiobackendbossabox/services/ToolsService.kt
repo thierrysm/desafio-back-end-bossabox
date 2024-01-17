@@ -6,4 +6,6 @@ interface ToolsService {
 
     fun findAll(): List<ToolsDto>
 
+    fun findByTag(tag: String): List<ToolsDto>
+
 }

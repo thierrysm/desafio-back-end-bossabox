@@ -5,6 +5,7 @@ import com.tsm.desafiobackendbossabox.services.ToolsService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -15,5 +16,11 @@ class ToolsController(private val toolsService: ToolsService) {
     fun findAll(): ResponseEntity<List<ToolsDto>> {
         val list = toolsService.findAll()
         return ResponseEntity.ok(list)
+    }
+
+    @GetMapping("/findByTag")
+    fun findByTag(@RequestParam tag: String?): ResponseEntity<List<ToolsDto>> {
+        val tools = toolsService.findByTag(tag ?:"")
+        return ResponseEntity.ok(tools)
     }
 }

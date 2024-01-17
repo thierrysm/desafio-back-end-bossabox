@@ -16,4 +16,9 @@ class ToolsServiceImpl(
         val list: List<Tools> = toolsRepository.findAll()
         return list.map { x -> toolsMapper.fromEntity(x) };
     }
+
+    override fun findByTag(tag: String): List<ToolsDto> {
+        val list: List<Tools> = toolsRepository.findByTag(tag)
+        return list.map { x -> toolsMapper.fromEntity(x) };
+    }
 }
