@@ -8,5 +8,6 @@ interface ToolsService {
     fun findAll(): List<ToolsDto>
     fun findByTag(tag: String): List<ToolsDto>
     fun insert(toolsDto: ToolsDto): Tools
+    fun deleteById(id: Long)
 
 }

@@ -28,4 +28,11 @@ class ToolsServiceImpl(
         }
         return toolsRepository.save(toolsMapper.toEntity(toolsDto))
     }
+
+    override fun deleteById(id: Long) {
+        val tool = toolsRepository.findById(id).orElseThrow {
+            RuntimeException("Tool not found with id: $id")
+        }
+        toolsRepository.delete(tool)
+    }
 }

@@ -28,4 +28,7 @@ class ToolsController(private val toolsService: ToolsService) {
         val obj = toolsService.insert(toolsDto)
         return ResponseEntity.status(HttpStatus.CREATED).body(obj);
     }
+
+    @DeleteMapping("/{id}")
+    fun insert(@PathVariable id: Long) = this.toolsService.deleteById(id)
 }
