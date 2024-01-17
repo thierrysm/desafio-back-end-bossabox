@@ -21,4 +21,11 @@ class ToolsServiceImpl(
         val list: List<Tools> = toolsRepository.findByTag(tag)
         return list.map { x -> toolsMapper.fromEntity(x) };
     }
+
+    override fun insert(toolsDto: ToolsDto): Tools {
+        if (toolsRepository.existsById(toolsDto.id)) {
+            throw RuntimeException("tools already exists")
+        }
+        return toolsRepository.save(toolsMapper.toEntity(toolsDto))
+    }
 }
